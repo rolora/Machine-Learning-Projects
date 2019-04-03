@@ -1,9 +1,9 @@
-#Learns the concept "EnjoySport" using Find-S and Candidate-Elimination Algorithms
+# Learns the concept "EnjoySport" using Find-S and Candidate-Elimination Algorithms
 
-##Example Find-S Training Process printed by the program:
+## Example Find-S Training Process printed by the program:
 
 training example: <cloudy,cool,high,strong,cool,change> false
-hypothesis: <Ø,Ø,Ø,Ø,Ø,Ø>
+hypothesis: <Ã˜,Ã˜,Ã˜,Ã˜,Ã˜,Ã˜>
 training example: <sunny,warm,normal,strong,warm,same> true
 hypothesis: <sunny,warm,normal,strong,warm,same>
 training example: <sunny,warm,high,weak,warm,same> true
@@ -25,7 +25,7 @@ hypothesis: <sunny,warm,?,?,warm,?>
 training example: <sunny,warm,normal,weak,cool,change> true
 hypothesis: <sunny,warm,?,?,?,?>
 
-##Example Candidate-Elimination Training Process printed by the program:
+## Example Candidate-Elimination Training Process printed by the program:
 
 training example: <rainy,cool,normal,weak,warm,same> false
 hypothesis G: <sunny,?,?,?,?,?>
@@ -35,7 +35,7 @@ hypothesis G: <?,?,high,?,?,?>
 hypothesis G: <?,?,?,strong,?,?>
 hypothesis G: <?,?,?,?,cool,?>
 hypothesis G: <?,?,?,?,?,change>
-hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø>
+hypothesis S: <Ã˜,Ã˜,Ã˜,Ã˜,Ã˜,Ã˜>
 training example: <rainy,warm,normal,strong,cool,change> false
 hypothesis G: <sunny,?,?,?,?,?>
 hypothesis G: <cloudy,?,?,?,?,?>
@@ -52,7 +52,7 @@ hypothesis G: <?,?,?,?,cool,same>
 hypothesis G: <?,cool,?,?,?,change>
 hypothesis G: <?,?,?,weak,?,change>
 hypothesis G: <?,?,?,?,warm,change>
-hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø>
+hypothesis S: <Ã˜,Ã˜,Ã˜,Ã˜,Ã˜,Ã˜>
 training example: <sunny,cool,normal,weak,warm,same> false
 hypothesis G: <sunny,warm,?,?,?,?>
 hypothesis G: <sunny,?,?,strong,?,?>
@@ -72,7 +72,7 @@ hypothesis G: <?,?,?,?,cool,same>
 hypothesis G: <?,cool,?,?,?,change>
 hypothesis G: <?,?,?,weak,?,change>
 hypothesis G: <?,?,?,?,warm,change>
-hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø>
+hypothesis S: <Ã˜,Ã˜,Ã˜,Ã˜,Ã˜,Ã˜>
 training example: <cloudy,cool,normal,weak,warm,change> false
 hypothesis G: <sunny,warm,?,?,?,?>
 hypothesis G: <sunny,?,?,strong,?,?>
@@ -95,7 +95,7 @@ hypothesis G: <?,?,?,?,cool,same>
 hypothesis G: <rainy,cool,?,?,?,change>
 hypothesis G: <rainy,?,?,weak,?,change>
 hypothesis G: <rainy,?,?,?,warm,change>
-hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø>
+hypothesis S: <Ã˜,Ã˜,Ã˜,Ã˜,Ã˜,Ã˜>
 training example: <sunny,warm,high,weak,warm,change> true
 hypothesis G: <sunny,warm,?,?,?,?>
 hypothesis G: <sunny,?,?,?,cool,?>
