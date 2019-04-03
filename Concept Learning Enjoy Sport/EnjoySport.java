@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
-
-// This is not right. Getting rid of all "less specific" things in general is getting rid of the correct one
 
 /**
  * Uses Find-S and Candidate-Elimination Algorithms to solve the concept learning problem of Enjoy Sport

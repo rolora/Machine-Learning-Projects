@@ -1,4 +1,6 @@
-Example Find-S Training Process printed by the program:
+#Learns the concept "EnjoySport" using Find-S and Candidate-Elimination Algorithms
+
+##Example Find-S Training Process printed by the program:
 
 training example: <cloudy,cool,high,strong,cool,change> false
 hypothesis: <Ø,Ø,Ø,Ø,Ø,Ø>
@@ -23,7 +25,7 @@ hypothesis: <sunny,warm,?,?,warm,?>
 training example: <sunny,warm,normal,weak,cool,change> true
 hypothesis: <sunny,warm,?,?,?,?>
 
-Example Candidate-Elimination Training Process printed by the program:
+##Example Candidate-Elimination Training Process printed by the program:
 
 training example: <rainy,cool,normal,weak,warm,same> false
 hypothesis G: <sunny,?,?,?,?,?>
