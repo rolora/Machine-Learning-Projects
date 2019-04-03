@@ -1,341 +1,343 @@
-# Learns the concept "EnjoySport" using Find-S and Candidate-Elimination Algorithms
+﻿# Learns the concept "EnjoySport" using Find-S and Candidate-Elimination Algorithms
+
+Target concept is <sunny, warm, ?, ?, ?, ?>
 
 ## Example Find-S Training Process printed by the program:
 
-training example: <cloudy,cool,high,strong,cool,change> false
-hypothesis: <Ø,Ø,Ø,Ø,Ø,Ø>
-training example: <sunny,warm,normal,strong,warm,same> true
-hypothesis: <sunny,warm,normal,strong,warm,same>
-training example: <sunny,warm,high,weak,warm,same> true
-hypothesis: <sunny,warm,?,?,warm,same>
-training example: <cloudy,cool,high,strong,cool,same> false
-hypothesis: <sunny,warm,?,?,warm,same>
-training example: <rainy,cool,high,weak,warm,change> false
-hypothesis: <sunny,warm,?,?,warm,same>
-training example: <rainy,warm,normal,strong,cool,change> false
-hypothesis: <sunny,warm,?,?,warm,same>
-training example: <rainy,warm,high,weak,cool,change> false
-hypothesis: <sunny,warm,?,?,warm,same>
-training example: <cloudy,cool,normal,weak,warm,change> false
-hypothesis: <sunny,warm,?,?,warm,same>
-training example: <sunny,warm,normal,weak,warm,change> true
-hypothesis: <sunny,warm,?,?,warm,?>
-training example: <cloudy,warm,high,strong,cool,same> false
-hypothesis: <sunny,warm,?,?,warm,?>
-training example: <sunny,warm,normal,weak,cool,change> true
-hypothesis: <sunny,warm,?,?,?,?>
+training example: <cloudy,cool,high,strong,cool,change><br> false<br>
+hypothesis: <Ø,Ø,Ø,Ø,Ø,Ø><br>
+training example: <sunny,warm,normal,strong,warm,same><br> true<br>
+hypothesis: <sunny,warm,normal,strong,warm,same><br>
+training example: <sunny,warm,high,weak,warm,same><br> true<br>
+hypothesis: <sunny,warm,?,?,warm,same><br>
+training example: <cloudy,cool,high,strong,cool,same><br> false<br>
+hypothesis: <sunny,warm,?,?,warm,same><br>
+training example: <rainy,cool,high,weak,warm,change><br> false<br>
+hypothesis: <sunny,warm,?,?,warm,same><br>
+training example: <rainy,warm,normal,strong,cool,change><br> false<br>
+hypothesis: <sunny,warm,?,?,warm,same><br>
+training example: <rainy,warm,high,weak,cool,change><br> false<br>
+hypothesis: <sunny,warm,?,?,warm,same><br>
+training example: <cloudy,cool,normal,weak,warm,change><br> false<br>
+hypothesis: <sunny,warm,?,?,warm,same><br>
+training example: <sunny,warm,normal,weak,warm,change><br> true<br>
+hypothesis: <sunny,warm,?,?,warm,?><br>
+training example: <cloudy,warm,high,strong,cool,same><br> false<br>
+hypothesis: <sunny,warm,?,?,warm,?><br>
+training example: <sunny,warm,normal,weak,cool,change><br> true<br>
+hypothesis: <sunny,warm,?,?,?,?><br>
 
 ## Example Candidate-Elimination Training Process printed by the program:
 
-training example: <rainy,cool,normal,weak,warm,same> false
-hypothesis G: <sunny,?,?,?,?,?>
-hypothesis G: <cloudy,?,?,?,?,?>
-hypothesis G: <?,warm,?,?,?,?>
-hypothesis G: <?,?,high,?,?,?>
-hypothesis G: <?,?,?,strong,?,?>
-hypothesis G: <?,?,?,?,cool,?>
-hypothesis G: <?,?,?,?,?,change>
-hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø>
-training example: <rainy,warm,normal,strong,cool,change> false
-hypothesis G: <sunny,?,?,?,?,?>
-hypothesis G: <cloudy,?,?,?,?,?>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <?,warm,?,?,?,same>
-hypothesis G: <?,?,high,?,?,?>
-hypothesis G: <?,cool,?,strong,?,?>
-hypothesis G: <?,?,?,strong,warm,?>
-hypothesis G: <?,?,?,strong,?,same>
-hypothesis G: <?,cool,?,?,cool,?>
-hypothesis G: <?,?,?,weak,cool,?>
-hypothesis G: <?,?,?,?,cool,same>
-hypothesis G: <?,cool,?,?,?,change>
-hypothesis G: <?,?,?,weak,?,change>
-hypothesis G: <?,?,?,?,warm,change>
-hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø>
-training example: <sunny,cool,normal,weak,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,strong,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,?,?,?>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <?,warm,?,?,?,same>
-hypothesis G: <?,?,high,?,?,?>
-hypothesis G: <?,cool,?,strong,?,?>
-hypothesis G: <?,?,?,strong,warm,?>
-hypothesis G: <?,?,?,strong,?,same>
-hypothesis G: <?,cool,?,?,cool,?>
-hypothesis G: <?,?,?,weak,cool,?>
-hypothesis G: <?,?,?,?,cool,same>
-hypothesis G: <?,cool,?,?,?,change>
-hypothesis G: <?,?,?,weak,?,change>
-hypothesis G: <?,?,?,?,warm,change>
-hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø>
-training example: <cloudy,cool,normal,weak,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,strong,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,warm,?,?,?,?>
-hypothesis G: <cloudy,?,?,strong,?,?>
-hypothesis G: <cloudy,?,?,?,cool,?>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <?,warm,?,?,?,same>
-hypothesis G: <?,?,high,?,?,?>
-hypothesis G: <?,cool,?,strong,?,?>
-hypothesis G: <?,?,?,strong,warm,?>
-hypothesis G: <?,?,?,strong,?,same>
-hypothesis G: <?,cool,?,?,cool,?>
-hypothesis G: <?,?,?,weak,cool,?>
-hypothesis G: <?,?,?,?,cool,same>
-hypothesis G: <rainy,cool,?,?,?,change>
-hypothesis G: <rainy,?,?,weak,?,change>
-hypothesis G: <rainy,?,?,?,warm,change>
-hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø>
-training example: <sunny,warm,high,weak,warm,change> true
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,strong,?,?>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <?,?,high,?,?,?>
-hypothesis G: <?,?,?,strong,warm,?>
-hypothesis G: <?,cool,?,?,cool,?>
-hypothesis G: <?,?,?,?,cool,same>
-hypothesis G: <rainy,?,?,weak,?,change>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,cool,normal,strong,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <?,?,high,?,?,?>
-hypothesis G: <?,cool,?,?,cool,?>
-hypothesis G: <?,?,?,?,cool,same>
-hypothesis G: <rainy,?,?,weak,?,change>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,cool,high,weak,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis G: <?,warm,high,?,?,?>
-hypothesis G: <?,cool,?,?,cool,?>
-hypothesis G: <?,?,?,?,cool,same>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,cool,normal,weak,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis G: <?,warm,high,?,?,?>
-hypothesis G: <?,cool,?,?,cool,?>
-hypothesis G: <?,?,?,?,cool,same>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,cool,high,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis G: <?,warm,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,cool,high,strong,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <?,warm,?,?,warm,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis G: <?,warm,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,warm,high,strong,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,warm,normal,strong,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <cloudy,?,?,?,?,same>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,cool,normal,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,warm,high,strong,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,warm,normal,strong,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,cool,high,strong,cool,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <sunny,cool,normal,strong,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <?,warm,?,weak,?,?>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,warm,normal,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <sunny,?,?,?,?,change>
-hypothesis G: <?,warm,high,weak,?,?>
-hypothesis G: <?,warm,?,weak,warm,?>
-hypothesis G: <?,warm,?,weak,?,change>
-hypothesis G: <sunny,?,high,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <sunny,cool,high,weak,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis G: <?,warm,high,weak,?,?>
-hypothesis G: <?,warm,?,weak,warm,?>
-hypothesis G: <?,warm,?,weak,?,change>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,warm,high,weak,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis G: <sunny,?,?,?,cool,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <sunny,cool,high,strong,cool,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,warm,high,weak,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,warm,high,weak,cool,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <sunny,cool,high,strong,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <sunny,cool,normal,strong,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,warm,normal,strong,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,warm,high,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,cool,high,strong,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <rainy,cool,normal,weak,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,cool,normal,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,warm,normal,weak,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <cloudy,cool,high,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <sunny,cool,high,strong,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,high,weak,warm,change>
-training example: <sunny,warm,normal,strong,warm,same> true
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <cloudy,warm,high,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <sunny,cool,normal,strong,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <cloudy,warm,high,weak,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <sunny,warm,normal,strong,warm,change> true
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <rainy,warm,high,strong,cool,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <cloudy,warm,high,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <rainy,cool,normal,weak,cool,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <cloudy,cool,high,weak,cool,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <cloudy,cool,high,weak,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <cloudy,cool,high,strong,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <rainy,cool,high,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <rainy,cool,normal,strong,warm,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <sunny,cool,high,strong,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <sunny,warm,high,weak,warm,change> true
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <rainy,cool,normal,strong,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <rainy,cool,high,weak,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <cloudy,cool,normal,strong,cool,change> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <rainy,cool,high,strong,cool,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <rainy,cool,normal,strong,warm,same> false
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,warm,?>
-training example: <sunny,warm,normal,strong,cool,change> true
-hypothesis G: <sunny,warm,?,?,?,?>
-hypothesis S: <sunny,warm,?,?,?,?>
+training example: <rainy,cool,normal,weak,warm,same><br> false<br>
+hypothesis G: <sunny,?,?,?,?,?><br>
+hypothesis G: <cloudy,?,?,?,?,?><br>
+hypothesis G: <?,warm,?,?,?,?><br>
+hypothesis G: <?,?,high,?,?,?><br>
+hypothesis G: <?,?,?,strong,?,?><br>
+hypothesis G: <?,?,?,?,cool,?><br>
+hypothesis G: <?,?,?,?,?,change><br>
+hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø><br>
+training example: <rainy,warm,normal,strong,cool,change><br> false<br>
+hypothesis G: <sunny,?,?,?,?,?><br>
+hypothesis G: <cloudy,?,?,?,?,?><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <?,warm,?,?,?,same><br>
+hypothesis G: <?,?,high,?,?,?><br>
+hypothesis G: <?,cool,?,strong,?,?><br>
+hypothesis G: <?,?,?,strong,warm,?><br>
+hypothesis G: <?,?,?,strong,?,same><br>
+hypothesis G: <?,cool,?,?,cool,?><br>
+hypothesis G: <?,?,?,weak,cool,?><br>
+hypothesis G: <?,?,?,?,cool,same><br>
+hypothesis G: <?,cool,?,?,?,change><br>
+hypothesis G: <?,?,?,weak,?,change><br>
+hypothesis G: <?,?,?,?,warm,change><br>
+hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø><br>
+training example: <sunny,cool,normal,weak,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,strong,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,?,?,?><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <?,warm,?,?,?,same><br>
+hypothesis G: <?,?,high,?,?,?><br>
+hypothesis G: <?,cool,?,strong,?,?><br>
+hypothesis G: <?,?,?,strong,warm,?><br>
+hypothesis G: <?,?,?,strong,?,same><br>
+hypothesis G: <?,cool,?,?,cool,?><br>
+hypothesis G: <?,?,?,weak,cool,?><br>
+hypothesis G: <?,?,?,?,cool,same><br>
+hypothesis G: <?,cool,?,?,?,change><br>
+hypothesis G: <?,?,?,weak,?,change><br>
+hypothesis G: <?,?,?,?,warm,change><br>
+hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø><br>
+training example: <cloudy,cool,normal,weak,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,strong,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,warm,?,?,?,?><br>
+hypothesis G: <cloudy,?,?,strong,?,?><br>
+hypothesis G: <cloudy,?,?,?,cool,?><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <?,warm,?,?,?,same><br>
+hypothesis G: <?,?,high,?,?,?><br>
+hypothesis G: <?,cool,?,strong,?,?><br>
+hypothesis G: <?,?,?,strong,warm,?><br>
+hypothesis G: <?,?,?,strong,?,same><br>
+hypothesis G: <?,cool,?,?,cool,?><br>
+hypothesis G: <?,?,?,weak,cool,?><br>
+hypothesis G: <?,?,?,?,cool,same><br>
+hypothesis G: <rainy,cool,?,?,?,change><br>
+hypothesis G: <rainy,?,?,weak,?,change><br>
+hypothesis G: <rainy,?,?,?,warm,change><br>
+hypothesis S: <Ø,Ø,Ø,Ø,Ø,Ø><br>
+training example: <sunny,warm,high,weak,warm,change><br> true<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,strong,?,?><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <?,?,high,?,?,?><br>
+hypothesis G: <?,?,?,strong,warm,?><br>
+hypothesis G: <?,cool,?,?,cool,?><br>
+hypothesis G: <?,?,?,?,cool,same><br>
+hypothesis G: <rainy,?,?,weak,?,change><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,cool,normal,strong,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <?,?,high,?,?,?><br>
+hypothesis G: <?,cool,?,?,cool,?><br>
+hypothesis G: <?,?,?,?,cool,same><br>
+hypothesis G: <rainy,?,?,weak,?,change><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,cool,high,weak,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis G: <?,warm,high,?,?,?><br>
+hypothesis G: <?,cool,?,?,cool,?><br>
+hypothesis G: <?,?,?,?,cool,same><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,cool,normal,weak,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis G: <?,warm,high,?,?,?><br>
+hypothesis G: <?,cool,?,?,cool,?><br>
+hypothesis G: <?,?,?,?,cool,same><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,cool,high,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis G: <?,warm,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,cool,high,strong,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <?,warm,?,?,warm,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis G: <?,warm,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,warm,high,strong,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,warm,normal,strong,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <cloudy,?,?,?,?,same><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,cool,normal,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,warm,high,strong,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,warm,normal,strong,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,cool,high,strong,cool,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <sunny,cool,normal,strong,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <?,warm,?,weak,?,?><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,warm,normal,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <sunny,?,?,?,?,change><br>
+hypothesis G: <?,warm,high,weak,?,?><br>
+hypothesis G: <?,warm,?,weak,warm,?><br>
+hypothesis G: <?,warm,?,weak,?,change><br>
+hypothesis G: <sunny,?,high,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <sunny,cool,high,weak,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis G: <?,warm,high,weak,?,?><br>
+hypothesis G: <?,warm,?,weak,warm,?><br>
+hypothesis G: <?,warm,?,weak,?,change><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,warm,high,weak,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis G: <sunny,?,?,?,cool,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <sunny,cool,high,strong,cool,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,warm,high,weak,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,warm,high,weak,cool,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <sunny,cool,high,strong,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <sunny,cool,normal,strong,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,warm,normal,strong,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,warm,high,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,cool,high,strong,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <rainy,cool,normal,weak,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,cool,normal,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,warm,normal,weak,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <cloudy,cool,high,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <sunny,cool,high,strong,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,high,weak,warm,change><br>
+training example: <sunny,warm,normal,strong,warm,same><br> true<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <cloudy,warm,high,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <sunny,cool,normal,strong,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <cloudy,warm,high,weak,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <sunny,warm,normal,strong,warm,change><br> true<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <rainy,warm,high,strong,cool,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <cloudy,warm,high,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <rainy,cool,normal,weak,cool,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <cloudy,cool,high,weak,cool,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <cloudy,cool,high,weak,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <cloudy,cool,high,strong,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <rainy,cool,high,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <rainy,cool,normal,strong,warm,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <sunny,cool,high,strong,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <sunny,warm,high,weak,warm,change><br> true<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <rainy,cool,normal,strong,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <rainy,cool,high,weak,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <cloudy,cool,normal,strong,cool,change><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <rainy,cool,high,strong,cool,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <rainy,cool,normal,strong,warm,same><br> false<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,warm,?><br>
+training example: <sunny,warm,normal,strong,cool,change><br> true<br>
+hypothesis G: <sunny,warm,?,?,?,?><br>
+hypothesis S: <sunny,warm,?,?,?,?><br>
