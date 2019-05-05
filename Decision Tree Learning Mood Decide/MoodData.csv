@@ -1,0 +1,21 @@
+﻿10,,,,,,,,,,
+Day of Week,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,,,
+Location,Cleveland,Pittsburgh,China,Other,,,,,,
+Temperature,Hot,Warm,Cool,Cold,,,,,,
+Good Meal?,Yes,No,,,,,,,,
+Boyfriend?,Yes,No,,,,,,,,
+Friends?,Yes,No,,,,,,,,
+New Routine?,Yes,No,,,,,,,,
+Bad news?,Yes,No,,,,,,,,
+Fulfilling Project?,Yes,No,,,,,,,,
+Days good,0,1,2,3,4,5,,,,
+5,,,,,,,,,,
+Day of Week,Location,Temperature,Good Meal?,Boyfriend?,Friends?,New Routine?,Bad News?,Fulfilling Project?,Days Good,Productive?
+Sunday,Cleveland,Cool,Yes,Yes,No,No,No,Yes,0,TRUE
+Monday,Pittsburgh,Warm,Yes,No,No,Yes,No,Yes,1,TRUE
+Tuesday,Pittsburgh,Cool,Yes,No,No,Yes,No,Yes,2,TRUE
+Wednesday,Pittsburgh,Hot,Yes,No,No,Yes,No,Yes,3,TRUE
+Thursday,Pittsburgh,Hot,Yes,No,No,Yes,No,Yes,4,TRUE
+Friday,Pittsburgh,Hot,Yes,No,No,Yes,Yes,No,5,FALSE
+Satuday,Pittsburgh,Warm,Yes,Yes,No,No,No,No,0,TRUE
+Sunday,Pittsburgh,Cool,Yes,Yes,No,No,No,Yes,1,TRUE
