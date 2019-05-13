@@ -1,21 +1,31 @@
-﻿10,,,,,,,,,,
-Day of Week,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,,,
-Location,Cleveland,Pittsburgh,China,Other,,,,,,
-Temperature,Hot,Warm,Cool,Cold,,,,,,
-Good Meal?,Yes,No,,,,,,,,
-Boyfriend?,Yes,No,,,,,,,,
-Friends?,Yes,No,,,,,,,,
-New Routine?,Yes,No,,,,,,,,
-Bad news?,Yes,No,,,,,,,,
-Fulfilling Project?,Yes,No,,,,,,,,
-Days good,0,1,2,3,4,5,,,,
-5,,,,,,,,,,
-Day of Week,Location,Temperature,Good Meal?,Boyfriend?,Friends?,New Routine?,Bad News?,Fulfilling Project?,Days Good,Productive?
-Sunday,Cleveland,Cool,Yes,Yes,No,No,No,Yes,0,TRUE
-Monday,Pittsburgh,Warm,Yes,No,No,Yes,No,Yes,1,TRUE
-Tuesday,Pittsburgh,Cool,Yes,No,No,Yes,No,Yes,2,TRUE
-Wednesday,Pittsburgh,Hot,Yes,No,No,Yes,No,Yes,3,TRUE
-Thursday,Pittsburgh,Hot,Yes,No,No,Yes,No,Yes,4,TRUE
-Friday,Pittsburgh,Hot,Yes,No,No,Yes,Yes,No,5,FALSE
-Satuday,Pittsburgh,Warm,Yes,Yes,No,No,No,No,0,TRUE
-Sunday,Pittsburgh,Cool,Yes,Yes,No,No,No,Yes,1,TRUE
+﻿12,,,,,,,,,,,,
+Day of Week,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,,,,,
+Location,Cleveland,Pittsburgh,China,Other,,,,,,,,
+Temperature,Hot,Warm,Cool,Cold,,,,,,,,
+Good Meal?,Yes,No,,,,,,,,,,
+Boyfriend?,Yes,No,,,,,,,,,,
+Friends?,Yes,No,,,,,,,,,,
+New Routine?,Yes,No,,,,,,,,,,
+Bad news?,Yes,No,,,,,,,,,,
+Fulfilling Project?,Yes,No,,,,,,,,,,
+Sleep Time,9,11,12,,,,,,,,,
+Wake up Time,5,7,,,,,,,,,,
+Days good,0,1,2,3,4,5,,,,,,
+16,,,,,,,,,,,,
+Day of Week,Location,Temperature,Good Meal?,Boyfriend?,Friends?,New Routine?,Bad News?,Fulfilling Project?,Sleep Time,Wake up Time,Days Good,Productive?
+Sunday,Cleveland,Cool,Yes,Yes,No,No,No,Yes,11,7,0,TRUE
+Monday,Pittsburgh,Warm,Yes,No,No,Yes,No,Yes,11,7,1,TRUE
+Tuesday,Pittsburgh,Cool,Yes,No,No,Yes,No,Yes,11,7,2,TRUE
+Wednesday,Pittsburgh,Hot,Yes,No,No,Yes,No,Yes,11,7,3,TRUE
+Thursday,Pittsburgh,Hot,Yes,No,No,Yes,No,Yes,11,7,4,TRUE
+Friday,Pittsburgh,Hot,Yes,No,No,Yes,Yes,No,12,7,5,FALSE
+Saturday,Pittsburgh,Warm,Yes,Yes,No,No,No,No,11,7,0,TRUE
+Sunday,Pittsburgh,Cool,Yes,Yes,No,No,No,Yes,11,7,1,TRUE
+Monday,Pittsburgh,Warm,No,Yes,No,No,No,No,9,5,2,FALSE
+Tuesday,Pittsburgh,Hot,No,No,Yes,Yes,No,Yes,11,7,0,TRUE
+Wednesday,Pittsburgh,Warm,Yes,No,Yes,No,No,No,11,7,1,FALSE
+Thursday,Pittsburgh,Warm,No,No,No,No,No,No,11,7,0,TRUE
+Friday,Pittsburgh,Cool,Yes,Yes,No,No,Yes,No,11,7,1,FALSE
+Saturday,Cleveland,Cool,Yes,Yes,No,No,Yes,No,11,7,0,TRUE
+Sunday,Cleveland,Cool,Yes,Yes,No,No,No,No,11,7,1,TRUE
+Monday,Pittsburgh,Cool,Yes,No,No,No,No,No,11,7,2,TRUE
