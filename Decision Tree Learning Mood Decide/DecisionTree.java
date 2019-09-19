@@ -10,8 +10,10 @@ import java.util.Scanner;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.lang.StringBuilder;
+import java.io.FileWriter;  
 
-public class MoodDecide {
+public class DecisionTree {
 
 	// HashMap key: attr name, val: index
 	private HashMap<String, Integer> attrNum = new HashMap<String, Integer>(); 
@@ -31,7 +33,7 @@ public class MoodDecide {
 	 * @param dataFile: the file to read data from
 	 * @throws Exception 
 	 */
-	public MoodDecide(String dataFile, boolean trainAndValidate) throws Exception {
+	public DecisionTree(String dataFile, boolean trainAndValidate) throws Exception {
 		readData(dataFile, trainAndValidate);
 
 		int pos = findPositive(training);
@@ -52,11 +54,16 @@ public class MoodDecide {
 		int attrs = -1;
     	int data = -1;
 		
+		String line;
+		ArrayList<String> temp;
+		String[] fields;
     	while (scanner.hasNextLine())
     	{
     		lineNum++;
-    	    String line = scanner.nextLine();
-    	    String[] fields = line.split(",");
+    	    line = scanner.nextLine();
+    	    temp = readDelimited(line, ',');
+    	    fields = temp.toArray(new String[temp.size()]);
+
     		if (lineNum == 0) {
     			// Gets rid of potential "﻿" at the beginning
     			fields[0] = fields[0].replaceAll("﻿", "");
@@ -75,16 +82,17 @@ public class MoodDecide {
     		} else if (lineNum > attrs + 2) { // Ignore line with all attribute names
     			// Read training example
     			ArrayList<String> currentTrain = new ArrayList<String>();
-    			for (int i = 0; i < fields.length; i++) {
+    			for (int i = 0; i <= attrs; i++) {
     				// Error checking: last one (classification) must be "TRUE" or "FALSE"
-    				if (i == fields.length - 1 && !fields[i].equals("TRUE") && !fields[i].equals("FALSE")) {
+    				if (i == attrs && !fields[i].equals("TRUE") && !fields[i].equals("FALSE")) {
     					scanner.close();
+    					System.out.println("lineNum = " + lineNum + " i = " + i + " content = " + fields[i]);
     					throw new Exception("Classification must be either TRUE or FALSE.");
     				}
     				// Error checking: all attribute values must be legal
-    				if (i < fields.length - 1 && attrDefs.get(i).indexOf(fields[i]) <= 0) {
+    				if (i <= attrs - 1 && attrDefs.get(i).indexOf(fields[i]) <= 0) {
     					scanner.close();
-    					throw new Exception("Illegal value " + fields[i] + " for attribute " + attrDefs.get(i).get(0) + ".");
+    					throw new Exception("Illegal value >" + fields[i] + "< for attribute " + attrDefs.get(i).get(0) + ".");
     				}
     				currentTrain.add(fields[i]);
     			}
@@ -99,6 +107,70 @@ public class MoodDecide {
     	scanner.close();
 	}
 	
+	/**
+	 * Read a delimited line
+	 * @param input input line
+	 * @param delimiter 
+	 * @return list of strings as content
+	 * @throws Exception
+	 */
+	private ArrayList<String> readDelimited(String input, char delimiter) throws Exception{
+        boolean quote = false;
+        ArrayList<String> fields = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < input.length(); i++)
+        {
+            if (!quote)
+            {
+                if (input.charAt(i) == delimiter)
+                {
+                    fields.add(sb.toString());
+                    sb = new StringBuilder();
+                    // Skip leading spaces
+                    while (i < input.length() - 1 && input.charAt(i + 1) == ' ')
+                    {
+                        i++;
+                    }
+                }
+                else if (input.charAt(i) == '"' && (i == 0 || input.charAt(i - 1) == delimiter))
+                {
+                    quote = true;
+                }
+                else
+                {
+                    sb.append(input.charAt(i));
+                }
+            }
+            else
+            {
+                if (input.charAt(i) == '"')
+                {
+                    if (i == input.length() - 1 || input.charAt(i + 1) == delimiter)
+                    {
+                        quote = false;
+                    }
+                    else if (i != input.length() - 1 && input.charAt(i + 1) == '"')
+                    {
+                        // Escape a quote
+                        sb.append('"');
+                        i++;
+                    }
+                    else
+                    {
+                        throw new Exception("line " + input + " cannot be parsed with delimiter " + delimiter);
+                    }
+                }
+                else
+                {
+                    sb.append(input.charAt(i));
+                }
+            }
+        }
+        fields.add(sb.toString());
+
+        return fields;
+    }
+        
 	/**
 	 * Given the current node (and therefore the path of conditions), return the set of all training data that satisfy the conditions
 	 * @param node
@@ -132,7 +204,7 @@ public class MoodDecide {
 	/** 
 	 * Find the number of positive training examples in data
 	 * @param data
-	 * @return
+	 * @return number of positive training examples
 	 */
 	private int findPositive(ArrayList<ArrayList<String>> data) {
 		int pos = 0;
@@ -149,7 +221,7 @@ public class MoodDecide {
 	/** 
 	 * Find the number of negative training examples in data
 	 * @param data
-	 * @return
+	 * @return number of negative training examples
 	 */
 	private int findNegative(ArrayList<ArrayList<String>> data) {
 		int neg = 0;
@@ -189,7 +261,7 @@ public class MoodDecide {
 	 * Calculates entropy given the number of positive and negative examples
 	 * @param pos
 	 * @param neg
-	 * @return
+	 * @return entropy
 	 */
 	private double calculateEntropy(int pos, int neg) {
 		if (pos + neg == 0) {
@@ -215,7 +287,7 @@ public class MoodDecide {
 	
 	/**
 	 * Recursively learns the decision tree node
-	 * @param node
+	 * @param node node to learn at this call
 	 */
 	private void learnThisNode(Node node) {
 		ArrayList<ArrayList<String>> satisfied = findSatisfiedTrainingData(node);
@@ -245,15 +317,14 @@ public class MoodDecide {
 		else {
 			// Find original entropy
 			double entropy = calculateEntropy(pos, neg);
-			
+
 			// For each unused attribute, calculate information gain.
 			double bestIG = 0;
 			int indexOfBestIG = -1;
 			for (int attrIndex : unused) {
 				double entropyAfterSplit = 0;
-				for (int i = 1; i < attrDefs.get(attrIndex).size(); i++) {
-					String val = attrDefs.get(attrIndex).get(i);
-					// Finds the section with the iterated val
+				for (String val : attrDefs.get(attrIndex)) {
+					// Finds the section that satisfies one of the added branch
 					@SuppressWarnings("unchecked")
 					ArrayList<ArrayList<String>> section = (ArrayList<ArrayList<String>>)satisfied.clone();
 					Iterator<ArrayList<String>> itr = section.iterator();
@@ -292,17 +363,24 @@ public class MoodDecide {
 				}
 				node.setChildren(children);
 				
+				// Debug
+				System.out.println("Learning node " + node.getAttr());
+
 				// Recurse
 				for (Node child : children) {
 					learnThisNode(child);
 				}
+			}
+			else {
+				// No attribute will lower the entropy. Classify this node directly
+				node.setAttr((pos >= neg) ? "TRUE" : "FALSE");
 			}
 		}
 	}
 
 	/**
 	 * Learns the decision tree. Calls recursive method learnThisNode
-	 * @return
+	 * @return root
 	 */
 	public Node learnDecisionTree() {	
 		root = new Node("", null);
@@ -313,13 +391,14 @@ public class MoodDecide {
 	/**
 	 * Reads an example, with the attributes in the same order, with or without actual classification attached, classify the example
 	 * @param example
-	 * @return
+	 * @return classification
 	 */
 	private boolean classifyExample(ArrayList<String> example) {
 		// Go from root, follow the decision tree
 		Node ptr = root;
 		String attr = ptr.getAttr();
 		
+		// Loop until pointer attribute is a classification
 		while (!attr.equals("TRUE") && !attr.equals("FALSE")) {
 			String val = example.get(attrNum.get(attr));
 			ArrayList<Node> children = ptr.getChildren();
@@ -336,7 +415,7 @@ public class MoodDecide {
 	
 	/**
 	 * Finds the accuracy with the current decision tree
-	 * @return
+	 * @return accuracy
 	 */
 	private double findAccuracyWithValidationSet() {
 		int accurate = 0;
@@ -377,13 +456,15 @@ public class MoodDecide {
 			Node leaf = new Node(n.getVal(), n.getParent());
 			leaf.setAttr("TRUE");
 			
-			n.getParent().replaceChild(n, leaf);
+			int index = n.getParent().getChildren().indexOf(n);
+
+			n.getParent().replaceChild(index, leaf);
 			double tAccuracy = findAccuracyWithValidationSet();
 			// Then try negative
 			leaf.setAttr("FALSE");
 			double fAccuracy = findAccuracyWithValidationSet();
 			// Change back
-			n.getParent().replaceChild(leaf, n);
+			n.getParent().replaceChild(index, n);
 			// Determine if either is the best accuracy so far
 			if (tAccuracy - accuracy > increasedAccuracy) {
 				increasedAccuracy = tAccuracy - accuracy;
@@ -410,7 +491,7 @@ public class MoodDecide {
 	
 	/**
 	 * Performs post-pruning with the validation set
-	 * @return
+	 * @return root node
 	 */
 	public Node postPruneWithValidationSet() {
 		// Find accuracy
@@ -449,7 +530,8 @@ public class MoodDecide {
 				// End Debug
 				
 				// Perform replacing
-				replace[0].getParent().replaceChild(replace[0], replace[1]);
+				int index = replace[0].getParent().getChildren().indexOf(replace[0]);
+				replace[0].getParent().replaceChild(index, replace[1]);
 				// Update accuracy
 				accuracy = findAccuracyWithValidationSet();
 			}
@@ -462,7 +544,7 @@ public class MoodDecide {
 	/**
 	 * Calculates the pessimistic accuracy for the given node
 	 * @param node
-	 * @return
+	 * @return the pessimistic accuracy
 	 */
 	private double calcPessimisticAccuracy(Node node) {
 		int accurate = 0;
@@ -505,7 +587,7 @@ public class MoodDecide {
 	 * Performs post pruning by using pessimistic estimate of training data.
 	 * From bottom up, for each non-leaf node, 
 	 * prune if the post-prune accuracy on that node is better than the combined accuracy of children
-	 * @return
+	 * @return root
 	 */
 	public Node postPruneByPessimisticEstimate() {
 		// Build a list of BFS, but without popping
@@ -544,25 +626,27 @@ public class MoodDecide {
 			Node leaf = new Node(n.getVal(), n.getParent());
 			leaf.setAttr("TRUE");
 			
-			n.getParent().replaceChild(n, leaf);
+			int index = n.getParent().getChildren().indexOf(n);
+
+			n.getParent().replaceChild(index, leaf);
 			double tAccuracy = calcPessimisticAccuracy(leaf);
 			// Then try negative
 			leaf.setAttr("FALSE");
 			double fAccuracy = calcPessimisticAccuracy(leaf);
 			// Change back
-			n.getParent().replaceChild(leaf, n);
+			n.getParent().replaceChild(index, n);
 			
 			// Determine if either is the best accuracy so far
 			if (tAccuracy > wAccuracy) {
 				wAccuracy = tAccuracy;
 				leaf.setAttr("TRUE");
 				// Replace
-				n.getParent().replaceChild(n, leaf);
+				n.getParent().replaceChild(index, leaf);
 			}
 			if (fAccuracy > wAccuracy) {
 				leaf.setAttr("FALSE");
 				// Replace
-				n.getParent().replaceChild(n, leaf);
+				n.getParent().replaceChild(index, leaf);
 			}
 		}
 		
@@ -572,41 +656,66 @@ public class MoodDecide {
 	/**
 	 * Learns and prunes the data in fileName with 1/3 of data as validation set
 	 * @param fileName
-	 * @return
+	 * @return root
 	 * @throws Exception
 	 */
 	public static Node learnAndPruneWithValidationSet(String fileName) throws Exception {
-		MoodDecide md = new MoodDecide(fileName, true);
+		DecisionTree md = new DecisionTree(fileName, true);
     	Node root = md.learnDecisionTree();
-    	System.out.println(root);
+
+    	FileWriter fw = new FileWriter("C:\\Users\\ryang\\Desktop\\ML\\validation_set_approach.txt");    
+        fw.write(root.toString());    
+
+    	//System.out.println(root);
+    	System.out.println("Postpruning...");
     	root = md.postPruneWithValidationSet();
-    	System.out.println(root);
+    	//System.out.println(root);
+
+    	fw.write("\n\nPostPrune\n\n");
+    	fw.write(root.toString());
+    	fw.close();
     	
+    	System.out.println("Finished.");
     	return root;
 	}
 	
 	/**
 	 * Learns and prunes the data in fileName using pessimistic estimate. 95% confidence level.
 	 * @param fileName
-	 * @return
+	 * @return root
 	 * @throws Exception
 	 */
 	public static Node learnAndPruneByPessimisticEstimate(String fileName) throws Exception {
-		MoodDecide md = new MoodDecide(fileName, false);
+		DecisionTree md = new DecisionTree(fileName, false);
 		Node root = md.learnDecisionTree();
-		System.out.println(root);
+
+		FileWriter fw = new FileWriter("C:\\Users\\ryang\\Desktop\\ML\\pessimistic_estimate_approach.txt");    
+        fw.write(root.toString());   
+
+		//System.out.println(root);
 		root = md.postPruneByPessimisticEstimate();
-		System.out.println(root);
+		//System.out.println(root);
+
+		fw.write("\n\nPostPrune\n\n");
+    	fw.write(root.toString());
+    	fw.close();
+    	
+    	System.out.println("Finished.");
 		
 		return root;
 	}
 	
+	/**
+	 * Main method
+	 * @param args input file name
+	 * @throws Exception
+	 */
     public static void main(String[] args) throws Exception {    
     	System.out.println("Validation set approach:");
-    	learnAndPruneWithValidationSet("src/PlayTennis.csv");
+    	learnAndPruneWithValidationSet(args[0]);
     	
     	System.out.println("Pessimistic Estimate appraoch:");
-    	learnAndPruneByPessimisticEstimate("src/PlayTennis.csv");
+    	learnAndPruneByPessimisticEstimate(args[0]);
     }
 }
 
@@ -660,6 +769,7 @@ class Node {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append(val + "->" + attr.toUpperCase() + " ");
+		
 		if (children != null) {
 			sb.append('[');
 			for (Node child : children) {
@@ -673,12 +783,10 @@ class Node {
 
 	/**
 	 * Replaces the old child with the new one
-	 * @param oldNode
+	 * @param index
 	 * @param newNode
 	 */
-	public void replaceChild(Node oldNode, Node newNode) {
-		// Find index of old node
-		int index = children.indexOf(oldNode);
+	public void replaceChild(int index, Node newNode) {
 		children.remove(index);
 		children.add(index, newNode);
 	}
