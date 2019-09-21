@@ -1,2 +1,4 @@
 # Machine-Learning-Projects
-Projects Made When Reading Tom Mitchell's Machine Learning
+Projects Made For Machine Learning
+* Machine Learning
+* Deep Learning
